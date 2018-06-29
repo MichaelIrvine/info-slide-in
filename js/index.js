@@ -18,12 +18,12 @@ function debounce(func, wait = 20, immediate = true) {
 
 // -----------------------------------------------------------------
 const imageTriggers = document.querySelectorAll(".cover-image");
-const infoPanel = document.querySelectorAll(".cover-info");
+const infoPanel = document.querySelector(".cover-info");
 
 function slideInfoOver() {
     imageTriggers.forEach(imageTrigger => {
       // half way through the image
-      const slideInAt = window.scrollY + window.innerHeight - imageTrigger.height / 2;
+      const slideInAt = (window.scrollY + window.innerHeight) - imageTrigger.height / 2;
       // bottom of the image
       const imageBottom = imageTrigger.offsetTop + imageTrigger.height;
       const isHalfShown = slideInAt > imageTrigger.offsetTop;
