@@ -20,19 +20,23 @@ function debounce(func, wait = 20, immediate = true) {
 const imageTriggers = document.querySelectorAll(".cover-image");
 const infoPanel = document.querySelector(".cover-info");
 
-function slideInfoOver() {
+function slideInfoOver(e) {
     imageTriggers.forEach(imageTrigger => {
-      // half way through the image
-      const slideInAt = (window.scrollY + window.innerHeight) - imageTrigger.height / 2;
-      // bottom of the image
-      const imageBottom = imageTrigger.offsetTop + imageTrigger.height;
-      const isHalfShown = slideInAt > imageTrigger.offsetTop;
-      const isNotScrolledPast = window.scrollY < imageBottom;
-      if (isHalfShown && isNotScrolledPast) {
-        infoPanel.classList.add("slide-over-active");
-      } else {
-        infoPanel.classList.remove("slide-over-active");
-      }
+
+        // bottom of browser window
+        const triggerLine = window.scrollY + window.innerHeight;
+        // Half way point of each image
+        const imageHalfWay = imageTrigger.offsetHeight / 2;
+        // Bottom of image
+        const imageBottom = imageTrigger.offsetTop + imageTrigger.offsetHeight;
+
+        if (triggerLine === imageHalfWay) {
+            // infoPanel.classList.add("slide-over-active");
+            console.log('we working');
+        } 
+        // else {
+        // infoPanel.classList.remove("slide-over-active");
+        // }
     });
 }
 
